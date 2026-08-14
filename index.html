@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bahaa Yassine — Career Portfolio / 2026</title>
+<meta name="description" content="Career Portfolio of Bahaa Yassine — Industrial Engineering &amp; Engineering Management student, Beirut Arab University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900&family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --ivory:#F3F0E7;
+  --stone:#E7E2D4;
+  --stone-2:#DCD6C5;
+  --graphite:#15161B;
+  --graphite-soft:#22242B;
+  --steel:#6D7280;
+  --steel-light:#9BA0AC;
+  --cobalt:#1E3FE0;
+  --cobalt-deep:#12279C;
+  --cobalt-glow:rgba(30,63,224,0.18);
+  --line:rgba(21,22,27,0.12);
+  --line-inv:rgba(243,240,231,0.16);
+
+  --display:'Archivo Black', 'Archivo', sans-serif;
+  --headline:'Archivo', sans-serif;
+  --condensed:'Archivo Narrow', sans-serif;
+  --body:'Archivo', sans-serif;
+  --mono:'JetBrains Mono', monospace;
+
+  --ease:cubic-bezier(.16,.84,.28,1);
+  --ease-soft:cubic-bezier(.4,0,.2,1);
+
+  --edge: clamp(24px, 6vw, 96px);
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+}
+
+body{
+  margin:0;
+  background:var(--ivory);
+  color:var(--graphite);
+  font-family:var(--body);
+  font-size:16px;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+button{font:inherit;background:none;border:none;color:inherit;cursor:pointer;}
+ul{list-style:none;margin:0;padding:0;}
+
+::selection{background:var(--cobalt);color:var(--ivory);}
+
+.container{max-width:1400px;margin:0 auto;padding:0 var(--edge);}
+
+/* label / eyebrow */
+.eyebrow{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--cobalt);
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+.eyebrow::before{
+  content:'';
+  width:22px;height:1px;background:var(--cobalt);
+  display:inline-block;
+}
+
+.num{
+  font-family:var(--display);
+  color:var(--graphite);
+  opacity:0.07;
+  line-height:0.8;
+  pointer-events:none;
+  user-select:none;
+}
+
+section{position:relative;}
+
+/* ============================================================
+   REDUCE MOTION TOUCH DEFAULTS
+   ============================================================ */
+.reveal{opacity:0; transform:translateY(36px); transition:opacity 1s var(--ease), transform 1s var(--ease);}
+.reveal.in{opacity:1; transform:translateY(0);}
+.reveal-line{opacity:0; transform:translateY(100%);}
+.reveal-line.in{opacity:1; transform:translateY(0);}
+.reveal-mask{position:relative; overflow:hidden;}
+.reveal-mask .mask-inner{transform:scale(1.12); transition:transform 1.4s var(--ease);}
+.reveal-mask.in .mask-inner{transform:scale(1);}
+.reveal-mask::after{
+  content:'';position:absolute;inset:0;background:var(--graphite);
+  transform-origin:left; transform:scaleX(1); transition:transform 1s var(--ease);
+  z-index:2;
+}
+.reveal-mask.in::after{transform:scaleX(0); transform-origin:right;}
+
+.stagger > *{transition-delay:calc(var(--i,0) * 90ms);}
+
+/* ============================================================
+   PRELOADER
+   ============================================================ */
+#preloader{
+  position:fixed;inset:0;z-index:9999;
+  background:var(--graphite);
+  color:var(--ivory);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  transition:transform 0.9s var(--ease), opacity 0.7s ease;
+}
+#preloader.done{transform:translateY(-100%); opacity:0.98; pointer-events:none;}
+.pre-count{
+  font-family:var(--mono);
+  font-size:clamp(14px,2vw,18px);
+  letter-spacing:0.2em;
+  color:var(--cobalt);
+  margin-bottom:18px;
+}
+.pre-name{
+  font-family:var(--display);
+  font-size:clamp(34px,7vw,84px);
+  letter-spacing:-0.01em;
+  overflow:hidden;
+  display:flex;
+  gap:0.3em;
+}
+.pre-name span{display:inline-block; transform:translateY(110%); transition:transform 0.7s var(--ease);}
+#preloader.reveal-name .pre-name span{transform:translateY(0);}
+.pre-bar{
+  width:min(320px,60vw); height:1px; background:var(--line-inv); margin-top:26px; position:relative; overflow:hidden;
+}
+.pre-bar i{position:absolute; left:0; top:0; height:100%; width:0%; background:var(--cobalt); display:block;}
+
+/* ============================================================
+   CUSTOM CURSOR
+   ============================================================ */
+#cursor{
+  position:fixed; top:0; left:0; width:14px; height:14px; border-radius:50%;
+  border:1px solid var(--graphite); pointer-events:none; z-index:9000;
+  transform:translate(-50%,-50%);
+  transition:width .25s var(--ease-soft), height .25s var(--ease-soft), background .25s var(--ease-soft), border-color .25s var(--ease-soft);
+  mix-blend-mode:difference;
+  display:none;
+}
+#cursor.show{display:block;}
+#cursor .cursor-label{
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  font-family:var(--mono); font-size:10px; letter-spacing:0.14em; color:var(--ivory);
+  opacity:0; white-space:nowrap; transition:opacity .2s ease;
+}
+#cursor.expand{width:64px;height:64px; border-color:var(--ivory); background:var(--graphite);}
+#cursor.expand .cursor-label{opacity:1;}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+header.site-nav{
+  position:fixed; top:0; left:0; right:0; z-index:500;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:22px var(--edge);
+  mix-blend-mode:difference;
+  color:var(--ivory);
+}
+.nav-mark{
+  font-family:var(--display); font-size:20px; letter-spacing:0.02em;
+}
+.nav-links{display:flex; gap:28px; align-items:center;}
+.nav-links a{
+  font-family:var(--mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase;
+  position:relative; padding-bottom:4px; opacity:0.72; transition:opacity .3s ease;
+}
+.nav-links a::after{
+  content:''; position:absolute; left:0; bottom:0; height:1px; width:0; background:currentColor;
+  transition:width .35s var(--ease);
+}
+.nav-links a:hover{opacity:1;}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+.nav-links a.active{opacity:1;}
+.nav-toggle{display:none; width:26px; height:20px; position:relative; cursor:pointer;}
+.nav-toggle span{position:absolute; left:0; right:0; height:1px; background:var(--ivory); transition:transform .3s var(--ease), opacity .3s ease;}
+.nav-toggle span:nth-child(1){top:0;}
+.nav-toggle span:nth-child(2){top:9px;}
+.nav-toggle span:nth-child(3){top:18px;}
+
+.mobile-nav{
+  position:fixed; inset:0; z-index:480; background:var(--graphite); color:var(--ivory);
+  display:flex; flex-direction:column; justify-content:center; padding:0 var(--edge);
+  transform:translateY(-100%); transition:transform .6s var(--ease);
+}
+.mobile-nav.open{transform:translateY(0);}
+.mobile-nav a{
+  font-family:var(--headline); font-weight:700; font-size:clamp(28px,8vw,46px);
+  padding:10px 0; border-bottom:1px solid var(--line-inv); display:block;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+#hero{
+  min-height:100vh; display:flex; flex-direction:column; justify-content:center;
+  padding:140px var(--edge) 60px;
+  position:relative;
+  background:
+    linear-gradient(var(--ivory), var(--ivory));
+}
+.hero-grid{
+  display:grid; grid-template-columns:1.15fr 0.85fr; gap:40px; align-items:end;
+}
+.hero-meta-top{
+  display:flex; justify-content:space-between; align-items:flex-start;
+  font-family:var(--mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--steel);
+  margin-bottom:28px;
+}
+.hero-meta-top div{line-height:1.7;}
+.hero-title{
+  font-family:var(--display);
+  font-size:clamp(58px, 11vw, 168px);
+  line-height:0.86;
+  letter-spacing:-0.015em;
+  color:var(--graphite);
+}
+.hero-title .line-wrap{overflow:hidden; display:block;}
+.hero-title .line-wrap span{display:block; transform:translateY(105%); transition:transform 1s var(--ease);}
+.hero-title.in .line-wrap span{transform:translateY(0);}
+.hero-title .line-wrap:nth-child(2) span{transition-delay:0.1s;}
+
+.hero-sub{
+  font-family:var(--condensed);
+  font-weight:700;
+  font-size:clamp(15px,2vw,20px);
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  color:var(--cobalt);
+  margin-top:22px;
+}
+.hero-portrait-wrap{
+  position:relative; align-self:end;
+}
+.hero-portrait{
+  position:relative; width:100%; aspect-ratio:3/4; overflow:hidden; background:var(--stone-2);
+  border:1px solid var(--line);
+}
+.hero-portrait img{width:100%;height:100%;object-fit:cover; transform:scale(1.08); transition:transform 1.6s var(--ease);}
+.hero-portrait.in img{transform:scale(1);}
+.hero-portrait .ph{
+  position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:10px; color:var(--steel); font-family:var(--mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase;
+  background:
+    repeating-linear-gradient(135deg, var(--stone) 0px, var(--stone) 1px, var(--stone-2) 1px, var(--stone-2) 42px);
+}
+.hero-portrait .ph b{font-family:var(--display); font-size:34px; color:var(--graphite); opacity:0.35; letter-spacing:0;}
+.hero-portrait-frame{
+  position:absolute; top:14px; left:14px; right:-14px; bottom:-14px; border:1px solid var(--cobalt); z-index:-1;
+  opacity:0; transition:opacity 1s var(--ease) .3s, transform 1s var(--ease) .3s;
+  transform:translate(-8px,8px);
+}
+.hero-portrait-wrap.in .hero-portrait-frame{opacity:1; transform:translate(0,0);}
+.hero-portrait-tag{
+  position:absolute; bottom:16px; left:16px; background:var(--graphite); color:var(--ivory);
+  font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; padding:8px 12px;
+}
+
+.hero-statement{
+  margin-top:56px; display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:end;
+  border-top:1px solid var(--line); padding-top:34px;
+}
+.hero-statement h2{
+  margin:0; font-family:var(--headline); font-weight:800; font-size:clamp(22px,3vw,34px); line-height:1.15; letter-spacing:-0.01em;
+}
+.hero-flowline{
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap; font-family:var(--mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--steel);
+}
+.hero-flowline .stop{color:var(--graphite); position:relative; padding-left:14px;}
+.hero-flowline .stop::before{content:''; position:absolute; left:0; top:50%; width:6px; height:6px; margin-top:-3px; border-radius:50%; background:var(--cobalt);}
+.hero-flowline .arrow{color:var(--cobalt);}
+
+.scroll-cue{
+  position:absolute; bottom:26px; left:var(--edge);
+  font-family:var(--mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--steel);
+  display:flex; align-items:center; gap:10px;
+}
+.scroll-cue .arrow-anim{display:inline-block; animation:bob 1.8s ease-in-out infinite;}
+@keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+
+/* ============================================================
+   SECTION SCAFFOLDING
+   ============================================================ */
+.sec{padding:150px var(--edge) 110px; position:relative;}
+.sec-dark{background:var(--graphite); color:var(--ivory);}
+.sec-dark .eyebrow{color:#5C7CFF;}
+.sec-dark .num{color:var(--ivory);}
+.sec-head{
+  display:grid; grid-template-columns:200px 1fr; gap:30px; margin-bottom:70px; position:relative;
+}
+.sec-head .num{font-size:clamp(90px,13vw,220px); position:absolute; top:-70px; left:-6px; z-index:0;}
+.sec-head-inner{grid-column:2; position:relative; z-index:1;}
+.sec-title{
+  font-family:var(--headline); font-weight:800; font-size:clamp(34px,5.2vw,64px); line-height:1.04; letter-spacing:-0.01em; margin:16px 0 0;
+}
+@media(max-width:760px){
+  .sec-head{grid-template-columns:1fr;}
+  .sec-head .num{position:static; font-size:76px; margin-bottom:6px; opacity:0.12;}
+  .sec-head-inner{grid-column:1;}
+}
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+#about .about-grid{display:grid; grid-template-columns:1.3fr 0.7fr; gap:70px;}
+#about p{font-size:18px; line-height:1.75; color:var(--graphite-soft); max-width:60ch; margin:0 0 22px;}
+#about p:first-of-type{font-size:21px; font-weight:600; color:var(--graphite);}
+.trait-list{display:flex; flex-direction:column; border-top:1px solid var(--line);}
+.trait-list li{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:20px 0; border-bottom:1px solid var(--line);
+  font-family:var(--condensed); font-weight:700; font-size:22px; text-transform:uppercase; letter-spacing:0.01em;
+}
+.trait-list li span.i{font-family:var(--mono); font-size:11px; color:var(--cobalt);}
+@media(max-width:900px){#about .about-grid{grid-template-columns:1fr;}}
+
+/* ============================================================
+   ROADMAP (02)
+   ============================================================ */
+.roadmap{position:relative; margin-top:20px;}
+.roadmap-track{
+  position:absolute; left:19px; top:10px; bottom:10px; width:2px; background:var(--line);
+}
+.roadmap-track i{
+  position:absolute; left:0; top:0; width:100%; height:0%; background:var(--cobalt);
+  transition:height 1.4s var(--ease);
+}
+.phase{
+  position:relative; padding:0 0 60px 64px; 
+}
+.phase:last-child{padding-bottom:0;}
+.phase-dot{
+  position:absolute; left:12px; top:4px; width:16px; height:16px; border-radius:50%;
+  background:var(--ivory); border:2px solid var(--steel-light); transition:border-color .5s ease, background .5s ease, transform .5s var(--ease);
+}
+.phase.in .phase-dot{border-color:var(--cobalt); background:var(--cobalt); transform:scale(1.1);}
+.phase-top{display:flex; flex-wrap:wrap; align-items:baseline; gap:14px; margin-bottom:10px;}
+.phase-tag{font-family:var(--mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--cobalt);}
+.phase-title{font-family:var(--headline); font-weight:800; font-size:clamp(22px,3vw,32px); letter-spacing:-0.01em;}
+.phase-time{font-family:var(--mono); font-size:12px; color:var(--steel);}
+.phase-desc{color:var(--graphite-soft); max-width:58ch; margin-bottom:16px; font-size:16px;}
+.chip-row{display:flex; flex-wrap:wrap; gap:10px;}
+.chip{
+  font-family:var(--mono); font-size:11px; letter-spacing:0.05em; text-transform:uppercase;
+  border:1px solid var(--line); padding:7px 12px; color:var(--graphite-soft);
+  transition:border-color .3s ease, color .3s ease;
+}
+.phase.in .chip{border-color:rgba(30,63,224,0.35);}
+.roadmap-dest{
+  margin-top:10px; padding:34px; border:1px solid var(--graphite); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;
+}
+.roadmap-dest .eyebrow{margin-bottom:8px;}
+.roadmap-dest h3{margin:0; font-family:var(--display); font-size:clamp(24px,3.4vw,42px);}
+
+/* ============================================================
+   EXPLORATION (03)
+   ============================================================ */
+.case{
+  display:grid; grid-template-columns:0.9fr 1.1fr; gap:0; border-top:1px solid var(--line);
+  padding:56px 0;
+}
+.case:last-child{border-bottom:1px solid var(--line);}
+.case-visual{position:relative; aspect-ratio:4/3; overflow:hidden; background:var(--stone-2);}
+.case-visual img{width:100%;height:100%;object-fit:cover;}
+.case-visual .ph{
+  position:absolute; inset:0; display:flex; align-items:flex-end; padding:20px;
+  background:repeating-linear-gradient(45deg, var(--stone) 0 1px, var(--stone-2) 1px 34px);
+  color:var(--steel);
+}
+.case-visual .ph span{font-family:var(--mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase;}
+.case-body{padding:0 0 0 54px; display:flex; flex-direction:column; justify-content:center;}
+.case-index{font-family:var(--mono); font-size:12px; color:var(--cobalt); letter-spacing:0.1em; margin-bottom:6px;}
+.case-org{font-family:var(--headline); font-weight:800; font-size:clamp(24px,3.2vw,38px); letter-spacing:-0.01em; margin:0 0 4px;}
+.case-loc{font-family:var(--mono); font-size:12px; color:var(--steel); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:22px;}
+.case-role{font-family:var(--condensed); font-weight:600; font-size:15px; text-transform:uppercase; letter-spacing:0.03em; color:var(--cobalt); margin-bottom:16px;}
+.tag-row{display:flex; flex-wrap:wrap; gap:8px 10px; margin-bottom:22px;}
+.tag-row span{font-family:var(--mono); font-size:11px; color:var(--graphite-soft); position:relative; padding-left:14px;}
+.tag-row span::before{content:'';position:absolute; left:0; top:6px; width:5px; height:5px; background:var(--cobalt);}
+.case-insight{border-left:2px solid var(--cobalt); padding-left:16px; font-family:var(--condensed); font-weight:600; font-size:18px; line-height:1.4;}
+@media(max-width:860px){
+  .case{grid-template-columns:1fr; gap:26px;}
+  .case-body{padding-left:0;}
+}
+
+/* ============================================================
+   EXPERIENCE (04) — dark
+   ============================================================ */
+#experience{background:var(--graphite); color:var(--ivory);}
+.exp-flow{
+  display:flex; flex-wrap:wrap; gap:0; margin:50px 0 60px; border-top:1px solid var(--line-inv); border-bottom:1px solid var(--line-inv);
+}
+.exp-flow .node{
+  flex:1 1 140px; padding:26px 10px; text-align:center; border-right:1px solid var(--line-inv); position:relative;
+}
+.exp-flow .node:last-child{border-right:none;}
+.exp-flow .node .dot{width:8px;height:8px;border-radius:50%;background:var(--steel-light); margin:0 auto 14px; transition:background .5s ease, transform .5s ease;}
+.exp-flow .node.in .dot{background:var(--cobalt); transform:scale(1.3);}
+.exp-flow .node span{font-family:var(--mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--steel-light);}
+.exp-flow .node.in span{color:var(--ivory);}
+.exp-cols{display:grid; grid-template-columns:1fr 1fr; gap:60px;}
+.exp-block h4{
+  font-family:var(--mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#5C7CFF; margin:0 0 18px;
+}
+.exp-areas{display:flex; flex-wrap:wrap; gap:10px;}
+.exp-areas span{
+  font-family:var(--condensed); font-weight:600; font-size:14px; text-transform:uppercase; letter-spacing:0.02em;
+  border:1px solid var(--line-inv); padding:10px 14px; transition:border-color .3s ease, transform .3s ease;
+}
+.exp-areas span:hover{border-color:var(--cobalt); transform:translateY(-2px);}
+.software-list{display:flex; flex-direction:column; gap:0;}
+.software-list li{
+  display:flex; justify-content:space-between; align-items:center; padding:16px 0; border-bottom:1px solid var(--line-inv);
+  font-family:var(--headline); font-weight:700; font-size:20px; letter-spacing:0.01em;
+}
+.software-list li span{font-family:var(--mono); font-size:11px; color:var(--steel-light);}
+.exp-years{
+  font-family:var(--display); font-size:clamp(70px,10vw,150px); line-height:0.85; margin:0 0 10px; color:var(--ivory);
+}
+@media(max-width:860px){.exp-cols{grid-template-columns:1fr;}}
+
+/* ============================================================
+   INTERVIEW (05)
+   ============================================================ */
+.interview-top{display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-bottom:60px;}
+.interview-card{border:1px solid var(--line); padding:30px;}
+.interview-card h4{font-family:var(--mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--steel); margin:0 0 14px;}
+.interview-card p{margin:0; font-family:var(--headline); font-weight:700; font-size:20px;}
+.interview-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-bottom:60px;}
+.interview-block{background:var(--ivory); padding:28px 22px;}
+.interview-block h5{font-family:var(--mono); font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--cobalt); margin:0 0 16px;}
+.interview-block ul li{font-family:var(--condensed); font-weight:600; font-size:15.5px; padding:6px 0; border-bottom:1px dashed var(--line);}
+.interview-block ul li:last-child{border-bottom:none;}
+.pull-quote{
+  border-top:1px solid var(--graphite); border-bottom:1px solid var(--graphite); padding:44px 0; position:relative;
+}
+.pull-quote span.mark{position:absolute; top:-6px; left:-6px; font-family:var(--display); font-size:110px; color:var(--cobalt); opacity:0.18; line-height:1;}
+.pull-quote p{
+  font-family:var(--headline); font-weight:700; font-size:clamp(22px,3.4vw,36px); line-height:1.25; letter-spacing:-0.01em; max-width:22ch; margin:0 0 16px;
+}
+.pull-quote .attrib{font-family:var(--mono); font-size:12px; text-transform:uppercase; letter-spacing:0.1em; color:var(--steel);}
+@media(max-width:900px){.interview-top{grid-template-columns:1fr;} .interview-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.interview-grid{grid-template-columns:1fr;}}
+
+/* ============================================================
+   HOW I LEARN (06)
+   ============================================================ */
+.learn-loop{
+  position:relative; display:grid; grid-template-columns:repeat(6,1fr); gap:14px; margin:20px 0 70px;
+}
+.learn-loop .lp{
+  border:1px solid var(--line); padding:20px 14px; text-align:left; position:relative; transition:border-color .4s ease, transform .4s ease;
+}
+.learn-loop .lp b{font-family:var(--mono); font-size:11px; color:var(--cobalt); display:block; margin-bottom:10px;}
+.learn-loop .lp span{font-family:var(--condensed); font-weight:700; font-size:16px; text-transform:uppercase;}
+.learn-loop .lp::after{content:'→'; position:absolute; right:-19px; top:50%; transform:translateY(-50%); color:var(--steel-light); font-family:var(--mono);}
+.learn-loop .lp:last-child::after{display:none;}
+.learn-loop .lp.in{border-color:var(--cobalt); transform:translateY(-4px);}
+@media(max-width:900px){
+  .learn-loop{grid-template-columns:1fr 1fr 1fr;}
+  .learn-loop .lp:nth-child(3)::after{display:none;}
+}
+@media(max-width:560px){.learn-loop{grid-template-columns:1fr 1fr;} .learn-loop .lp::after{display:none;}}
+
+.learn-cols{display:grid; grid-template-columns:1fr 1fr; gap:60px; margin-bottom:70px;}
+.learn-best li{
+  padding:16px 0; border-bottom:1px solid var(--line); font-family:var(--condensed); font-weight:600; font-size:17px;
+  position:relative; padding-left:22px;
+}
+.learn-best li::before{content:'';position:absolute; left:0; top:22px; width:8px; height:1px; background:var(--cobalt);}
+.strategy-list{counter-reset:strat; display:flex; flex-direction:column;}
+.strategy-list li{
+  counter-increment:strat; display:grid; grid-template-columns:44px 1fr; gap:16px; padding:16px 0; border-bottom:1px solid var(--line);
+}
+.strategy-list li::before{
+  content:counter(strat,decimal-leading-zero); font-family:var(--mono); font-size:13px; color:var(--cobalt);
+}
+.strategy-list li b{display:block; font-family:var(--headline); font-weight:700; font-size:15.5px; text-transform:uppercase; letter-spacing:0.02em;}
+.strategy-list li p{margin:4px 0 0; font-size:14.5px; color:var(--steel);}
+.motiv-goal{display:grid; grid-template-columns:1.1fr 0.9fr; gap:50px; align-items:start; border-top:1px solid var(--line); padding-top:50px;}
+.motiv-list{display:flex; flex-wrap:wrap; gap:10px;}
+.motiv-list span{font-family:var(--mono); font-size:12px; letter-spacing:0.03em; border:1px solid var(--line); padding:9px 14px; color:var(--graphite-soft);}
+.goal-box{background:var(--graphite); color:var(--ivory); padding:30px;}
+.goal-box h4{font-family:var(--mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#5C7CFF; margin:0 0 12px;}
+.goal-box p{margin:0; font-family:var(--headline); font-weight:600; font-size:18px; line-height:1.45;}
+@media(max-width:900px){.learn-cols,.motiv-goal{grid-template-columns:1fr;}}
+
+/* ============================================================
+   COMMUNICATION (07)
+   ============================================================ */
+.comm-panel{border-top:1px solid var(--line);}
+.comm-panel:last-child{border-bottom:1px solid var(--line);}
+.comm-head{
+  display:flex; align-items:center; justify-content:space-between; padding:28px 0; cursor:pointer;
+}
+.comm-head .l{font-family:var(--mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--cobalt); display:block; margin-bottom:8px;}
+.comm-head h3{margin:0; font-family:var(--headline); font-weight:700; font-size:clamp(20px,2.6vw,28px);}
+.comm-head .plus{width:26px; height:26px; position:relative; flex:none;}
+.comm-head .plus::before,.comm-head .plus::after{content:''; position:absolute; background:var(--graphite); transition:transform .4s var(--ease);}
+.comm-head .plus::before{left:0;top:50%;width:100%;height:1px; margin-top:-0.5px;}
+.comm-head .plus::after{top:0;left:50%;height:100%;width:1px; margin-left:-0.5px;}
+.comm-panel.open .plus::after{transform:rotate(90deg); opacity:0;}
+.comm-body{max-height:0; overflow:hidden; transition:max-height .55s var(--ease);}
+.comm-body-inner{padding:0 0 36px; display:grid; grid-template-columns:1fr 1fr; gap:26px;}
+.comm-body-inner p{margin:0; font-size:15px; color:var(--graphite-soft);}
+.demo-list span{
+  display:inline-block; font-family:var(--mono); font-size:11px; border:1px solid var(--line); padding:8px 12px; margin:0 8px 8px 0; color:var(--graphite-soft);
+}
+@media(max-width:760px){.comm-body-inner{grid-template-columns:1fr;}}
+
+/* ============================================================
+   DOCUMENTS (08)
+   ============================================================ */
+.doc-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px;}
+.doc-card{border:1px solid var(--line); position:relative; padding:0; overflow:hidden; transition:border-color .3s ease;}
+.doc-card:hover{border-color:var(--graphite);}
+.doc-preview{
+  aspect-ratio:4/5; position:relative;
+  background:
+   repeating-linear-gradient(var(--stone) 0 1px, transparent 1px 26px),
+   var(--ivory);
+  border-bottom:1px solid var(--line);
+  padding:26px;
+  display:flex; flex-direction:column; gap:10px;
+}
+.doc-preview .bar{height:6px; background:var(--stone-2);}
+.doc-preview .bar.w40{width:40%;}
+.doc-preview .bar.w70{width:70%;}
+.doc-preview .bar.w100{width:100%;}
+.doc-preview .bar.hl{background:var(--cobalt); opacity:0.35;}
+.doc-info{display:flex; align-items:center; justify-content:space-between; padding:24px 26px;}
+.doc-info h4{margin:0; font-family:var(--headline); font-weight:700; font-size:19px;}
+.doc-btn{
+  font-family:var(--mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--cobalt);
+  display:inline-flex; align-items:center; gap:8px; border-bottom:1px solid var(--cobalt); padding-bottom:3px;
+  transition:gap .3s ease;
+}
+.doc-btn:hover{gap:14px;}
+@media(max-width:760px){.doc-grid{grid-template-columns:1fr;}}
+
+/* ============================================================
+   LINKEDIN (09)
+   ============================================================ */
+#linkedin{background:var(--stone); text-align:left;}
+.li-wrap{display:grid; grid-template-columns:1.2fr 0.8fr; gap:50px; align-items:center;}
+.li-wrap p{font-size:18px; line-height:1.7; color:var(--graphite-soft); max-width:52ch; margin:18px 0 0;}
+.li-btn{
+  display:inline-flex; align-items:center; justify-content:space-between; gap:26px;
+  border:1px solid var(--graphite); padding:26px 30px; width:100%;
+  font-family:var(--headline); font-weight:700; font-size:clamp(16px,2vw,20px); text-transform:uppercase; letter-spacing:0.01em;
+  position:relative; overflow:hidden; transition:color .4s ease;
+}
+.li-btn::before{content:''; position:absolute; inset:0; background:var(--graphite); transform:scaleX(0); transform-origin:left; transition:transform .5s var(--ease); z-index:0;}
+.li-btn:hover{color:var(--ivory);}
+.li-btn:hover::before{transform:scaleX(1);}
+.li-btn span, .li-btn svg{position:relative; z-index:1;}
+
+/* ============================================================
+   REFLECTION (10)
+   ============================================================ */
+.reflect-story{max-width:900px;}
+.reflect-story p{
+  font-family:var(--headline); font-size:clamp(18px,2.4vw,25px); line-height:1.6; color:var(--graphite-soft); margin:0 0 46px;
+}
+.reflect-story p b{
+  color:var(--graphite); font-weight:800; background:linear-gradient(to top, var(--cobalt-glow) 40%, transparent 40%);
+  padding:0 2px;
+}
+.reflect-pull{
+  font-family:var(--display); font-size:clamp(28px,5vw,52px); line-height:1.08; letter-spacing:-0.01em; color:var(--graphite);
+  margin:70px 0; max-width:16ch;
+}
+
+/* ============================================================
+   FUTURE (11)
+   ============================================================ */
+#future{background:var(--graphite); color:var(--ivory);}
+.future-title{
+  font-family:var(--headline); font-weight:800; font-size:clamp(30px,5.6vw,60px); line-height:1.12; letter-spacing:-0.01em; max-width:20ch; margin:16px 0 70px;
+}
+.future-chain{display:flex; flex-direction:column; max-width:560px;}
+.future-chain .fc{
+  display:flex; align-items:center; gap:20px; padding:16px 0; border-bottom:1px solid var(--line-inv);
+  font-family:var(--condensed); font-weight:700; font-size:clamp(16px,2.4vw,22px); text-transform:uppercase; letter-spacing:0.01em;
+  opacity:0.35; transition:opacity .5s ease, transform .5s ease; transform:translateX(-14px);
+}
+.future-chain .fc.in{opacity:1; transform:translateX(0);}
+.future-chain .fc .d{width:8px; height:8px; border-radius:50%; background:var(--steel-light); flex:none;}
+.future-chain .fc.in .d{background:var(--cobalt);}
+.future-final{
+  margin-top:60px; padding-top:40px; border-top:1px solid var(--line-inv); font-size:18px; line-height:1.7; color:var(--steel-light); max-width:62ch;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{
+  background:var(--graphite); color:var(--ivory); padding:130px var(--edge) 50px; text-align:left; position:relative;
+}
+.foot-title{
+  font-family:var(--display); font-size:clamp(30px,6.4vw,84px); line-height:1.02; letter-spacing:-0.01em; margin:0 0 60px;
+}
+.foot-cols{display:flex; justify-content:space-between; flex-wrap:wrap; gap:40px; align-items:flex-end; border-top:1px solid var(--line-inv); padding-top:40px;}
+.foot-id p{margin:4px 0 0; color:var(--steel-light); font-size:14px;}
+.foot-id .name{font-family:var(--headline); font-weight:700; font-size:20px; margin-bottom:2px; color:var(--ivory);}
+.foot-connect{
+  display:inline-flex; align-items:center; gap:14px; font-family:var(--mono); font-size:12px; letter-spacing:0.1em; text-transform:uppercase;
+  border-bottom:1px solid var(--ivory); padding-bottom:6px;
+}
+.foot-bottom{margin-top:70px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-family:var(--mono); font-size:11px; color:var(--steel-light); letter-spacing:0.05em;}
+
+/* ============================================================
+   SHARED ICON
+   ============================================================ */
+.icon-arrow{width:16px;height:16px; flex:none;}
+
+/* Section number responsive default */
+@media(max-width:480px){
+  .sec{padding:110px 20px 80px;}
+}
+</style>
+</head>
+<body>
+
+<div id="preloader">
+  <div class="pre-count"><span id="pre-num">00</span> / 100</div>
+  <div class="pre-name"><span>B</span><span>A</span><span>H</span><span>A</span><span>A</span></div>
+  <div class="pre-bar"><i id="pre-bar-fill"></i></div>
+</div>
+
+<div id="cursor"><span class="cursor-label"></span></div>
+
+<header class="site-nav">
+  <a href="#hero" class="nav-mark">BY.</a>
+  <nav class="nav-links">
+    <a href="#about" data-nav>About</a>
+    <a href="#development" data-nav>Development</a>
+    <a href="#exploration" data-nav>Exploration</a>
+    <a href="#experience" data-nav>Experience</a>
+    <a href="#documents" data-nav>Documents</a>
+    <a href="#reflection" data-nav>Reflection</a>
+    <a href="#future" data-nav>Future</a>
+  </nav>
+  <div class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span><span></span></div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="#about">About</a>
+  <a href="#development">Development</a>
+  <a href="#exploration">Exploration</a>
+  <a href="#experience">Experience</a>
+  <a href="#documents">Documents</a>
+  <a href="#reflection">Reflection</a>
+  <a href="#future">Future</a>
+</div>
+
+<main>
+
+<!-- ============ 00 HERO ============ -->
+<section id="hero">
+  <div class="hero-meta-top">
+    <div>BEIRUT ARAB UNIVERSITY<br>CAREER PORTFOLIO / 2026<br>LEBANON</div>
+    <div style="text-align:right;">INDEX&nbsp;/&nbsp;00<br>SCROLL FOR STORY</div>
+  </div>
+
+  <div class="hero-grid">
+    <div>
+      <h1 class="hero-title reveal" id="heroTitle">
+        <span class="line-wrap"><span>BAHAA</span></span>
+        <span class="line-wrap"><span>YASSINE</span></span>
+      </h1>
+      <div class="hero-sub reveal">INDUSTRIAL ENGINEERING &amp; ENGINEERING MANAGEMENT</div>
+    </div>
+    <div class="hero-portrait-wrap reveal" data-cursor="EXPLORE">
+      <div class="hero-portrait-frame"></div>
+      <div class="hero-portrait">
+        <img src="assets/bahaa-profile.jpg" alt="Portrait of Bahaa Yassine" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="ph" style="display:none;"><b>BY</b><span>Portrait — assets/bahaa-profile.jpg</span></div>
+      </div>
+      <div class="hero-portrait-tag">BAHAA YASSINE — 2026</div>
+    </div>
+  </div>
+
+  <div class="hero-statement reveal">
+    <h2>ENGINEERING THE PROCESS.<br>BUILDING THE FUTURE.</h2>
+    <div class="hero-flowline" id="flowLine">
+      <span class="stop">ENGINEERING</span><span class="arrow">→</span>
+      <span class="stop">MANUFACTURING</span><span class="arrow">→</span>
+      <span class="stop">MANAGEMENT</span><span class="arrow">→</span>
+      <span class="stop">BUSINESS</span>
+    </div>
+  </div>
+
+  <div class="scroll-cue"><span class="arrow-anim">↓</span> SCROLL TO EXPLORE</div>
+</section>
+
+<!-- ============ 01 ABOUT ============ -->
+<section class="sec" id="about">
+  <div class="container">
+    <div class="sec-head">
+      <div class="num reveal">01</div>
+      <div class="sec-head-inner">
+        <span class="eyebrow reveal">About</span>
+        <h2 class="sec-title reveal">WHERE ENGINEERING<br>MEETS PRACTICAL THINKING.</h2>
+      </div>
+    </div>
+
+    <div class="about-grid">
+      <div>
+        <p class="reveal">Bahaa Yassine is an Industrial Engineering and Engineering Management student at Beirut Arab University with a strong interest in manufacturing, business operations, and practical engineering applications.</p>
+        <p class="reveal">Through his academic studies and hands-on experience, he has developed knowledge and skills related to manufacturing processes, industrial machinery, CNC operations, production environments, technical and graphic design, and business management.</p>
+        <p class="reveal">He is particularly interested in understanding how engineering, production, people, technology, and business decisions connect to create efficient operations.</p>
+        <p class="reveal">Bahaa approaches projects with curiosity, responsibility, creativity, organization, and a practical problem-solving mindset.</p>
+        <p class="reveal">His long-term ambition is to establish and grow his own manufacturing company, combining engineering knowledge, technology, management and practical experience to develop useful and innovative products.</p>
+      </div>
+      <div>
+        <div class="eyebrow reveal" style="margin-bottom:18px;">Characteristics</div>
+        <ul class="trait-list">
+          <li class="reveal"><span>Hardworking</span><span class="i">01</span></li>
+          <li class="reveal"><span>Responsible</span><span class="i">02</span></li>
+          <li class="reveal"><span>Creative</span><span class="i">03</span></li>
+          <li class="reveal"><span>Organized</span><span class="i">04</span></li>
+          <li class="reveal"><span>Ambitious</span><span class="i">05</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 DEVELOPMENT ============ -->
+<section class="sec" id="development">
+  <div class="container">
+    <div class="sec-head">
+      <div class="num reveal">02</div>
+      <div class="sec-head-inner">
+        <span class="eyebrow reveal">My Professional Development</span>
+        <h2 class="sec-title reveal">FROM STUDENT<br>TO FUTURE FOUNDER.</h2>
+      </div>
+    </div>
+
+    <div class="roadmap" id="roadmap">
+      <div class="roadmap-track"><i id="roadmapFill"></i></div>
+
+      <div class="phase" data-phase>
+        <div class="phase-dot"></div>
+        <div class="phase-top">
+          <span class="phase-tag">Phase 01</span>
+          <span class="phase-title">Academic Foundation</span>
+          <span class="phase-time">Target: 2027</span>
+        </div>
+        <p class="phase-desc">Successfully complete the Bachelor's degree in Industrial Engineering &amp; Engineering Management.</p>
+        <div class="chip-row">
+          <span class="chip">Complete University Courses</span>
+          <span class="chip">Strengthen Technical Knowledge</span>
+          <span class="chip">Academic Projects</span>
+          <span class="chip">Graduate with a Strong Foundation</span>
+        </div>
+      </div>
+
+      <div class="phase" data-phase>
+        <div class="phase-dot"></div>
+        <div class="phase-top">
+          <span class="phase-tag">Phase 02</span>
+          <span class="phase-title">Industrial Experience</span>
+          <span class="phase-time">2027 – 2028</span>
+        </div>
+        <div class="chip-row">
+          <span class="chip">Manufacturing Experience</span>
+          <span class="chip">CNC</span>
+          <span class="chip">Machinery</span>
+          <span class="chip">Production Processes</span>
+          <span class="chip">Production Planning</span>
+          <span class="chip">Quality</span>
+          <span class="chip">Internships &amp; Practical Training</span>
+        </div>
+      </div>
+
+      <div class="phase" data-phase>
+        <div class="phase-dot"></div>
+        <div class="phase-top">
+          <span class="phase-tag">Phase 03</span>
+          <span class="phase-title">Professional Development</span>
+        </div>
+        <div class="chip-row">
+          <span class="chip">AutoCAD</span>
+          <span class="chip">SolidWorks</span>
+          <span class="chip">CNC</span>
+          <span class="chip">Engineering Software</span>
+          <span class="chip">Leadership</span>
+          <span class="chip">Project Management</span>
+          <span class="chip">Communication</span>
+          <span class="chip">Teamwork</span>
+        </div>
+      </div>
+
+      <div class="phase" data-phase>
+        <div class="phase-dot"></div>
+        <div class="phase-top">
+          <span class="phase-tag">Phase 04</span>
+          <span class="phase-title">Entrepreneurial Preparation</span>
+        </div>
+        <div class="chip-row">
+          <span class="chip">Professional CV</span>
+          <span class="chip">LinkedIn</span>
+          <span class="chip">Portfolio</span>
+          <span class="chip">Industry Network</span>
+          <span class="chip">Manufacturing Opportunities</span>
+          <span class="chip">Business Research</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="roadmap-dest reveal">
+      <div>
+        <div class="eyebrow">Final Destination</div>
+        <h3>BUILD A MANUFACTURING COMPANY</h3>
+      </div>
+      <span style="font-family:var(--mono); font-size:12px; color:var(--steel); text-transform:uppercase; letter-spacing:0.1em;">Long-Term Direction</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 EXPLORATION ============ -->
+<section class="sec" id="exploration">
+  <div class="container">
+    <div class="sec-head">
+      <div class="num reveal">03</div>
+      <div class="sec-head-inner">
+        <span class="eyebrow reveal">Career Exploration</span>
+        <h2 class="sec-title reveal">LEARNING BEYOND<br>THE CLASSROOM.</h2>
+      </div>
+    </div>
+
+    <div class="case reveal">
+      <div class="case-visual reveal-mask">
+        <div class="mask-inner ph"><span>IFFB — assets/manufacturing-01.jpg</span></div>
+      </div>
+      <div class="case-body">
+        <div class="case-index">CASE 01 / 03</div>
+        <h3 class="case-org">International Factory for Food &amp; Beverages (IFFB)</h3>
+        <div class="case-loc">Hsoun, Lebanon</div>
+        <div class="case-role">Observed — Production Line Operator</div>
+        <div class="tag-row">
+          <span>Automated Beverage Filling</span><span>Packaging</span><span>Conveyor Systems</span>
+          <span>Production Monitoring</span><span>Machine Operation</span><span>Safety</span><span>Teamwork</span>
+        </div>
+        <p class="case-insight">Efficient production depends on the coordination of machines, monitoring, safety and people.</p>
+      </div>
+    </div>
+
+    <div class="case reveal">
+      <div class="case-visual reveal-mask">
+        <div class="mask-inner ph"><span>CIL — assets/production.jpg</span></div>
+      </div>
+      <div class="case-body">
+        <div class="case-index">CASE 02 / 03</div>
+        <h3 class="case-org">Charafeddine Industrial Laboratories (CIL)</h3>
+        <div class="case-loc">Lebanon</div>
+        <div class="tag-row">
+          <span>Beauty-Care Manufacturing</span><span>Filling</span><span>Labeling</span><span>Coding</span>
+          <span>Packaging</span><span>Production Monitoring</span><span>Quality</span><span>Hygiene &amp; Safety</span>
+        </div>
+        <p class="case-insight">Manufacturing requires control, organization and continuous attention to quality.</p>
+      </div>
+    </div>
+
+    <div class="case reveal">
+      <div class="case-visual reveal-mask">
+        <div class="mask-inner ph"><span>PHARMALINE — assets/cnc.jpg</span></div>
+      </div>
+      <div class="case-body">
+        <div class="case-index">CASE 03 / 03</div>
+        <h3 class="case-org">Pharmaline</h3>
+        <div class="case-loc">Mrah Ibrahim, Lebanon</div>
+        <div class="tag-row">
+          <span>Pharmaceutical Production</span><span>Manufacturing Equipment</span><span>Documentation</span>
+          <span>Monitoring</span><span>Computerized Production Systems</span><span>Product Quality</span><span>Hygiene &amp; Restricted Areas</span>
+        </div>
+        <p class="case-insight">Precision, documentation and quality control are essential in high-standard manufacturing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 EXPERIENCE — dark ============ -->
+<section class="sec sec-dark" id="experience">
+  <div class="container">
+    <div class="sec-head">
+      <div class="num reveal">04</div>
+      <div class="sec-head-inner">
+        <span class="eyebrow reveal">Practical Experience</span>
+        <h2 class="sec-title reveal">FOUR YEARS<br>BEYOND THEORY.</h2>
+      </div>
+    </div>
+
+    <div class="exp-years reveal">4+</div>
+    <p class="reveal" style="max-width:56ch; color:var(--steel-light); font-size:16px;">Years of practical exposure across manufacturing floors, machinery, technical design, and business operations.</p>
+
+    <div class="exp-flow" id="expFlow">
+      <div class="node" data-node><div class="dot"></div><span>Design</span></div>
+      <div class="node" data-node><div class="dot"></div><span>Machine</span></div>
+      <div class="node" data-node><div class="dot"></div><span>Production</span></div>
+      <div class="node" data-node><div class="dot"></div><span>Operations</span></div>
+      <div class="node" data-node><div class="dot"></div><span>Customer</span></div>
+      <div class="node" data-node><div class="dot"></div><span>Business</span></div>
+    </div>
+
+    <div class="exp-cols">
+      <div class="exp-block reveal">
+        <h4>Areas of Experience</h4>
+        <div class="exp-areas">
+          <span>Industrial Machinery</span><span>Production Lines</span><span>CNC Machines</span><span>CNC Software</span>
+          <span>Manufacturing Processes</span><span>Production Coordination</span><span>Administration</span>
+          <span>Sales</span><span>Customer Communication</span><span>Basic Accounting</span>
+          <span>Inventory Activities</span><span>Technical Design</span><span>Graphic Design</span>
+        </div>
+      </div>
+      <div class="exp-block reveal">
+        <h4>Software</h4>
+        <ul class="software-list">
+          <li>AutoCAD <span>CAD</span></li>
+          <li>Adobe Illustrator <span>Design</span></li>
+          <li>Adobe Photoshop <span>Design</span></li>
+          <li>CNC Software <span>Manufacturing</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 INTERVIEW ============ -->
+<section class="sec" id="interview">
+  <div class="container">
+    <div class="sec-head">
+      <div class="num reveal">05</div>
+      <div class="sec-head-inner">
+        <span class="eyebrow reveal">Informational Interview</span>
+        <h2 class="sec-title reveal">LEARNING FROM<br>THE INDUSTRY.</h2>
+      </div>
+    </div>
+
+    <div class="interview-top">
+      <div class="interview-card reveal">
+        <h4>Company</h4>
+        <p>Yassine Ceramic — Lebanon</p>
+      </div>
+      <div class="interview-card reveal">
+        <h4>Interviewed Role</h4>
+        <p>Operations &amp; Production Manager</p>
+      </div>
+    </div>
+
+    <div class="interview-grid">
+      <div class="interview-block reveal">
+        <h5>The Role</h5>
+        <ul><li>Operations</li><li>Production</li><li>Employees</li><li>Quality</li><li>Orders</li><li>Inventory</li><li>Materials</li></ul>
+      </div>
+      <div class="interview-block reveal">
+        <h5>What the Industry Requires</h5>
+        <ul><li>Technical Knowledge</li><li>Production Planning</li><li>Communication</li><li>Organization</li><li>Problem Solving</li><li>Team Management</li><li>Decision Making</li></ul>
+      </div>
+      <div class="interview-block reveal">
+        <h5>Challenges</h5>
+        <ul><li>Managing People</li><li>Production Problems</li><li>Time Management</li><li>Business Responsibilities</li></ul>
+      </div>
+      <div class="interview-block reveal">
+        <h5>The Future</h5>
+        <ul><li>CNC Technology</li><li>Computer-Aided Design</li><li>Modern Production Equipment</li><li>Digital Inventory Systems</li><li>Automation</li></ul>
+      </div>
+    </div>
+
+    <div class="pull-quote reveal">
+      <span class="mark">“</span>
+      <p>Combine education with practical experience. Learn how machines and production systems work, improve technical software skills, develop communication and leadership, and remain willing to learn.</p>
+      <div class="attrib">— Operations &amp; Production Manager, Yassine Ceramic</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 HOW I LEARN ============ -->
+<section class="sec" id="learn">
+  <div class="container">
+    <div class="sec-head">
+      <div class="num reveal">06</div>
+      <div class="sec-head-inner">
+        <span class="eyebrow reveal">How I Learn</span>
+        <h2 class="sec-title reveal">HOW I LEARN.<br>HOW I APPLY.<br>HOW I IMPROVE.</h2>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-bottom:50px;">
+      <div class="eyebrow" style="margin-bottom:12px;">Learner Profile</div>
+      <p style="font-family:var(--headline); font-weight:700; font-size:clamp(18px,2.4vw,24px); max-width:58ch; margin:0;">Visual + Practical Learner — I understand concepts best when I can see them, apply them, and connect them to real-life situations.</p>
+    </div>
+
+    <div class="learn-loop" id="learnLoop">
+      <div class="lp" data-lp><b>01</b><span>See</span></div>
+      <div class="lp" data-lp><b>02</b><span>Think</span></div>
+      <div class="lp" data-lp><b>03</b><span>Practice</span></div>
+      <div class="lp" data-lp><b>04</b><span>Apply</span></div>
+      <div class="lp" data-lp><b>05</b><span>Review</span></div>
+      <div class="lp" data-lp><b>06</b><span>Improve</span></div>
+    </div>
+
+    <div class="learn-cols">
+      <div class="reveal">
+        <div class="eyebrow" style="margin-bottom:16px;">I Learn Best When</div>
+        <ul class="learn-best">
+          <li>I use diagrams, pictures and visual notes</li>
+          <li>I practice and solve problems</li>
+          <li>I break large topics into smaller steps</li>
+          <li>I study in a quiet environment without distractions</li>
+          <li>I teach or explain concepts to others</li>
+        </ul>
+      </div>
+      <div class="reveal">
+        <div class="eyebrow" style="margin-bottom:16px;">My Learning Strategy</div>
+        <ul class="strategy-list">
+          <li><div><b>Set Goals</b><p>Set clear goals and plan the week.</p></div></li>
+          <li><div><b>Plan &amp; Schedule</b><p>Organize study time and follow a schedule.</p></div></li>
+          <li><div><b>Study Actively</b><p>Read, take notes, highlight and summarize.</p></div></li>
+          <li><div><b>Practice &amp; Apply</b><p>Solve problems and complete exercises.</p></div></li>
+          <li><div><b>Review &amp; Improve</b><p>Review regularly and learn from mistakes.</p></div></li>
+          <li><div><b>Stay Consistent</b><p>Remain focused and continue improving.</p></div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="motiv-goal">
+      <div class="reveal">
+        <div class="eyebrow" style="margin-bottom:16px;">What Motivates Me</div>
+        <div class="motiv-list">
+          <span>Achieving Goals &amp; Seeing Progress</span>
+          <span>Learning New Skills</span>
+          <span>Challenges &amp; Improvement</span>
+          <span>Building a Better Future for My Family</span>
+        </div>
+      </div>
+      <div class="goal-box reveal">
+        <h4>My Goal</h4>
+        <p>Graduate from university and build a successful career that makes me proud and allows me to create a positive impact.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 COMMUNICATION ============ -->
+<section class="sec" id="communication">
+  <div class="container">
+    <div class="sec-head">
+      <div class="num reveal">07</div>
+      <div class="sec-head-inner">
+        <span class="eyebrow reveal">Professional Communication</span>
+        <h2 class="sec-title reveal">WRITING FOR<br>DIFFERENT AUDIENCES.</h2>
+      </div>
+    </div>
+
+    <div class="comm-panel reveal" data-panel>
+      <div class="comm-head" data-panel-toggle>
+        <div>
+          <span class="l">Client Communication</span>
+          <h3>Wedding Invitation Design Confirmation</h3>
+        </div>
+        <div class="plus"></div>
+      </div>
+      <div class="comm-body">
+        <div class="comm-body-inner">
+          <p>A message confirming design requirements with a client — establishing a professional tone, gathering specifications, clarifying details, and keeping the exchange organized from brief to delivery.</p>
+          <div class="demo-list">
+            <span>Professional Tone</span><span>Requirements Gathering</span><span>Clarification</span><span>Organization</span><span>Client Communication</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comm-panel reveal" data-panel>
+      <div class="comm-head" data-panel-toggle>
+        <div>
+          <span class="l">Workplace Communication</span>
+          <h3>Employee Benefits Clarification</h3>
+        </div>
+        <div class="plus"></div>
+      </div>
+      <div class="comm-body">
+        <div class="comm-body-inner">
+          <p>A formal internal email requesting clarification on employee benefits — structured, specific, and precise, reflecting workplace tone and attention to detail.</p>
+          <div class="demo-list">
+            <span>Formal Email Structure</span><span>Specific Questioning</span><span>Professional Communication</span><span>Clarity</span><span>Attention to Detail</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 DOCUMENTS ============ -->
+<section class="sec" id="documents">
+  <div class="container">
+    <div class="sec-head">
+      <div class="num reveal">08</div>
+      <div class="sec-head-inner">
+        <span class="eyebrow reveal">Career Documents</span>
+        <h2 class="sec-title reveal">READY FOR<br>THE NEXT STEP.</h2>
+      </div>
+    </div>
+
+    <div class="doc-grid">
+      <div class="doc-card reveal" data-cursor="VIEW">
+        <div class="doc-preview">
+          <div class="bar w40 hl"></div><div class="bar w100"></div><div class="bar w70"></div>
+          <div class="bar w100"></div><div class="bar w40"></div><div class="bar w70"></div><div class="bar w100"></div>
+        </div>
+        <div class="doc-info">
+          <h4>Curriculum Vitae</h4>
+          <a class="doc-btn" href="assets/bahaa-cv.pdf" target="_blank" rel="noopener">VIEW CV ↗</a>
+        </div>
+      </div>
+      <div class="doc-card reveal" data-cursor="VIEW">
+        <div class="doc-preview">
+          <div class="bar w40 hl"></div><div class="bar w100"></div><div class="bar w100"></div>
+          <div class="bar w70"></div><div class="bar w100"></div><div class="bar w40"></div>
+        </div>
+        <div class="doc-info">
+          <h4>Cover Letter</h4>
+          <a class="doc-btn" href="assets/bahaa-cover-letter.pdf" target="_blank" rel="noopener">VIEW COVER LETTER ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 09 LINKEDIN ============ -->
+<section class="sec" id="linkedin">
+  <div class="container">
+    <div class="li-wrap">
+      <div>
+        <div class="eyebrow reveal">Digital Presence</div>
+        <h2 class="sec-title reveal" style="margin-top:16px;">CONNECT BEYOND<br>THE PORTFOLIO.</h2>
+        <p class="reveal">Building a professional digital presence is part of developing my career identity, expanding my network, and connecting with opportunities in engineering, manufacturing and management.</p>
+      </div>
+      <a class="li-btn reveal" href="https://www.linkedin.com/in/bahaa-yassine-a475b8426" target="_blank" rel="noopener" data-cursor="OPEN">
+        <span>VIEW MY LINKEDIN</span>
+        <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10 REFLECTION ============ -->
+<section class="sec" id="reflection">
+  <div class="container">
+    <div class="sec-head">
+      <div class="num reveal">10</div>
+      <div class="sec-head-inner">
+        <span class="eyebrow reveal">Self-Reflection</span>
+        <h2 class="sec-title reveal">WHAT CAREER EXPLORATION<br>CHANGED FOR ME.</h2>
+      </div>
+    </div>
+
+    <div class="reflect-story">
+      <p class="reveal">The Virtual Career Exploration Project helped me gain a clearer understanding of the career opportunities available to me as an Industrial Engineering and Engineering Management student. Before completing this project, I already had a strong interest in manufacturing and practical engineering, but the different activities allowed me to look at these interests from a <b>broader and more professional perspective.</b></p>
+
+      <p class="reveal">Through the company observations, I was able to explore different manufacturing environments, including food and beverage production, cosmetics, and pharmaceuticals. Although these industries produce very different products, I noticed that they all depend on similar principles such as efficient processes, quality control, safety, organization, teamwork, and proper use of technology.</p>
+
+      <div class="reflect-pull reveal">Industrial Engineering can be applied across many different industries.</div>
+
+      <p class="reveal">The informational interview was also valuable because it gave me a more realistic understanding of operations and production management. I learned that <b>technical knowledge alone is not enough</b> to succeed in this field. Communication, leadership, problem-solving, time management, and the ability to work effectively with people are equally important.</p>
+
+      <p class="reveal">The project also made me reflect on my own learning style and strengths. As a visual and practical learner, I understand concepts best when I can see how they work and apply them to real situations. This explains why I am particularly interested in manufacturing, machinery, CNC operations, production processes, and other areas where engineering knowledge can be connected directly to practical work.</p>
+
+      <p class="reveal">Overall, this career exploration experience confirmed my interest in combining Industrial Engineering, manufacturing, and management. It also helped me recognize the skills I still need to develop, especially in engineering software, production management, communication, and leadership.</p>
+
+      <div class="reflect-pull reveal">The project gave me greater confidence in my long-term direction.</div>
+
+      <p class="reveal">My goal is not only to work within a manufacturing environment, but eventually to <b>establish and grow my own manufacturing company.</b> I want to use my engineering education, practical experience, management knowledge, and continuous learning to develop useful products, improve processes, and build a successful business.</p>
+
+      <p class="reveal">This project showed me that reaching that goal will require both technical expertise and strong management skills. It has therefore encouraged me to continue learning, gain more practical experience, and develop myself step by step toward becoming both an engineer and a future business leader.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11 FUTURE ============ -->
+<section class="sec" id="future">
+  <div class="container">
+    <div class="sec-head">
+      <div class="num reveal">11</div>
+      <div class="sec-head-inner">
+        <span class="eyebrow reveal">Future</span>
+      </div>
+    </div>
+
+    <h2 class="future-title reveal">THE GOAL IS NOT ONLY TO WORK IN INDUSTRY. IT IS TO BUILD WITHIN IT.</h2>
+
+    <div class="future-chain" id="futureChain">
+      <div class="fc" data-fc><span class="d"></span>Industrial Engineering</div>
+      <div class="fc" data-fc><span class="d"></span>Manufacturing</div>
+      <div class="fc" data-fc><span class="d"></span>Operations</div>
+      <div class="fc" data-fc><span class="d"></span>Management</div>
+      <div class="fc" data-fc><span class="d"></span>Product Development</div>
+      <div class="fc" data-fc><span class="d"></span>Entrepreneurship</div>
+    </div>
+
+    <p class="future-final reveal">My long-term goal is to establish and grow a manufacturing company that combines engineering, technology, practical experience and business management to create useful and innovative products.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <h2 class="foot-title reveal">LEARN THE SYSTEM.<br>IMPROVE THE PROCESS.<br>BUILD THE FUTURE.</h2>
+
+    <div class="foot-cols">
+      <div class="foot-id">
+        <div class="name">Bahaa Yassine</div>
+        <p>Industrial Engineering &amp; Engineering Management</p>
+        <p>Beirut Arab University</p>
+      </div>
+      <a class="foot-connect" href="https://www.linkedin.com/in/bahaa-yassine-a475b8426" target="_blank" rel="noopener" data-cursor="OPEN">
+        LET'S CONNECT
+        <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+      </a>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© 2026 BAHAA YASSINE</span>
+      <span>CAREER PORTFOLIO — BEIRUT ARAB UNIVERSITY</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
+  /* ---------- PRELOADER ---------- */
+  var pre = document.getElementById('preloader');
+  var preNum = document.getElementById('pre-num');
+  var preBar = document.getElementById('pre-bar-fill');
+
+  function finishPreloader(){
+    pre.classList.add('reveal-name');
+    setTimeout(function(){
+      pre.classList.add('done');
+      document.body.style.overflow = '';
+    }, 550);
+  }
+
+  if(reduceMotion){
+    pre.style.display = 'none';
+  } else {
+    document.body.style.overflow = 'hidden';
+    var count = 0;
+    var timer = setInterval(function(){
+      count += Math.ceil(Math.random()*14)+4;
+      if(count >= 100){ count = 100; clearInterval(timer); finishPreloader(); }
+      preNum.textContent = String(count).padStart(2,'0');
+      preBar.style.width = count + '%';
+    }, 90);
+  }
+
+  /* ---------- CUSTOM CURSOR ---------- */
+  if(!isTouch && !reduceMotion){
+    var cur = document.getElementById('cursor');
+    cur.classList.add('show');
+    window.addEventListener('mousemove', function(e){
+      cur.style.left = e.clientX + 'px';
+      cur.style.top = e.clientY + 'px';
+    });
+    document.querySelectorAll('[data-cursor]').forEach(function(el){
+      el.addEventListener('mouseenter', function(){
+        cur.classList.add('expand');
+        cur.querySelector('.cursor-label').textContent = el.getAttribute('data-cursor');
+      });
+      el.addEventListener('mouseleave', function(){
+        cur.classList.remove('expand');
+      });
+    });
+    document.querySelectorAll('a, button').forEach(function(el){
+      if(el.hasAttribute('data-cursor')) return;
+      el.addEventListener('mouseenter', function(){
+        cur.classList.add('expand');
+        cur.querySelector('.cursor-label').textContent = 'VIEW';
+      });
+      el.addEventListener('mouseleave', function(){ cur.classList.remove('expand'); });
+    });
+  }
+
+  /* ---------- MOBILE NAV ---------- */
+  var navToggle = document.getElementById('navToggle');
+  var mobileNav = document.getElementById('mobileNav');
+  navToggle.addEventListener('click', function(){
+    mobileNav.classList.toggle('open');
+  });
+  mobileNav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ mobileNav.classList.remove('open'); });
+  });
+
+  /* ---------- SCROLL REVEAL ---------- */
+  var revealEls = document.querySelectorAll('.reveal, .reveal-mask, .hero-portrait, .hero-portrait-wrap, [data-phase], [data-node], [data-lp], [data-fc]');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+        }
+      });
+    }, {threshold:0.18, rootMargin:'0px 0px -8% 0px'});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* hero title + portrait immediate reveal shortly after load */
+  window.addEventListener('load', function(){
+    setTimeout(function(){
+      document.getElementById('heroTitle').classList.add('in');
+      document.querySelectorAll('#hero .reveal').forEach(function(el){ el.classList.add('in'); });
+      document.querySelector('.hero-portrait').classList.add('in');
+      document.querySelector('.hero-portrait-wrap').classList.add('in');
+    }, reduceMotion ? 0 : 700);
+  });
+
+  /* ---------- ROADMAP FILL ---------- */
+  var roadmap = document.getElementById('roadmap');
+  var roadmapFill = document.getElementById('roadmapFill');
+  function updateRoadmapFill(){
+    if(!roadmap) return;
+    var rect = roadmap.getBoundingClientRect();
+    var vh = window.innerHeight;
+    var total = rect.height;
+    var visible = vh*0.75 - rect.top;
+    var pct = Math.max(0, Math.min(1, visible/total));
+    roadmapFill.style.height = (pct*100) + '%';
+  }
+  window.addEventListener('scroll', updateRoadmapFill, {passive:true});
+  window.addEventListener('resize', updateRoadmapFill);
+  updateRoadmapFill();
+
+  /* ---------- ACTIVE NAV INDICATOR ---------- */
+  var navLinks = document.querySelectorAll('[data-nav]');
+  var sectionsForNav = ['about','development','exploration','experience','documents','reflection','future']
+    .map(function(id){ return document.getElementById(id); }).filter(Boolean);
+  if('IntersectionObserver' in window){
+    var navIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          var id = entry.target.id;
+          navLinks.forEach(function(l){
+            l.classList.toggle('active', l.getAttribute('href') === '#'+id);
+          });
+        }
+      });
+    }, {threshold:0.4});
+    sectionsForNav.forEach(function(s){ navIO.observe(s); });
+  }
+
+  /* ---------- COMMUNICATION ACCORDION ---------- */
+  document.querySelectorAll('[data-panel-toggle]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var panel = btn.closest('[data-panel]');
+      var body = panel.querySelector('.comm-body');
+      var isOpen = panel.classList.contains('open');
+      document.querySelectorAll('[data-panel]').forEach(function(p){
+        p.classList.remove('open');
+        p.querySelector('.comm-body').style.maxHeight = null;
+      });
+      if(!isOpen){
+        panel.classList.add('open');
+        body.style.maxHeight = body.scrollHeight + 'px';
+      }
+    });
+  });
+
+  /* ---------- SUBTLE PARALLAX ON PORTRAIT (desktop, non-touch) ---------- */
+  if(!isTouch && !reduceMotion){
+    var portraitImg = document.querySelector('.hero-portrait img');
+    window.addEventListener('scroll', function(){
+      if(!portraitImg) return;
+      var y = window.scrollY;
+      portraitImg.style.transform = 'scale(1) translateY(' + Math.min(y*0.06, 60) + 'px)';
+    }, {passive:true});
+  }
+
+})();
+</script>
+</body>
+</html>
